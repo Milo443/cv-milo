@@ -6,7 +6,8 @@
     <title>CV - Camilo Andres Calderón</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-   <link href="style.css" rel="stylesheet"
+    
+   <link href="style.css" rel="stylesheet">
    
 </head>
 <body>
@@ -212,39 +213,8 @@
     <footer style="text-align: center; margin-top: 3rem; color: var(--slate-400); font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em;">
         Construido con HTML • CSS • JS
     </footer>
-
-    <script>
-        // 1. Inicializar iconos de Lucide
-        lucide.createIcons();
-
-        // 2. Lógica de la barra de progreso de lectura
-        window.addEventListener("scroll", () => {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercent = (scrollTop / scrollHeight) * 100;
-            document.getElementById("scroll-progress").style.width = scrollPercent + "%";
-        });
-
-        // 3. Intersection Observer para animaciones "Scroll Reveal"
-        // Esto imita el `whileInView` o `initial/animate` de Framer Motion
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1 // Dispara cuando el 10% del elemento es visible
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Animación ocurre solo una vez
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
+    
+    <script src="script.js"></script>
+ 
 </body>
 </html>
