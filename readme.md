@@ -13,7 +13,7 @@ Puedes visualizar la versión desplegada aquí:
 ---
 
 ## 🚀 Sobre el Proyecto
-
+ 
 Este proyecto es una versión estática y altamente optimizada de mi hoja de vida profesional. Originalmente concebido en React, fue migrado a **HTML5, CSS3 y JavaScript Vanilla** para garantizar un rendimiento máximo, tiempos de carga instantáneos y compatibilidad universal sin dependencias de frameworks pesados.
 
 ### ✨ Características Principales
