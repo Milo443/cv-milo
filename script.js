@@ -30,6 +30,7 @@ document.querySelectorAll('.reveal').forEach(el => {
     observer.observe(el);
 });
 
+
 // 1. Función para agregar una nueva tecnología al stack
 const agregarTecnologia = (nombre, colorClase) => {
     const contenedor = document.getElementById("frontend-stack");
@@ -44,6 +45,8 @@ const agregarTecnologia = (nombre, colorClase) => {
         contenedor.appendChild(nuevoPill);
     }
 };
+
+
 
 // 2. Event Listener para el botón de "+"
 const btnAdd = document.getElementById("add-tech-btn");
@@ -60,6 +63,61 @@ if (btnAdd) {
             // Opcional: Si quieres que aparezcan iconos en las nuevas, 
             // debes llamar a lucide después de insertar
             lucide.createIcons();
+        }
+    });
+}
+
+
+
+// Función para agregar una nueva tarjeta de experiencia laboral
+const agregarExperiencia = (rol, empresa, periodo, tareas) => {
+    const contenedor = document.getElementById("experience-timeline");
+    
+    if (contenedor) {
+        const nuevaExp = document.createElement("div");
+        nuevaExp.classList.add("exp-card", "reveal", "active"); // active para que sea visible de inmediato
+
+        // Estructura interna de la tarjeta (replicando el diseño original)
+        nuevaExp.innerHTML = `
+            <div class="timeline-dot dot-slate"></div>
+            <div class="exp-header">
+                <div>
+                    <h3 class="role-title">${rol}</h3>
+                    <p class="company-name">${empresa}</p>
+                </div>
+                <span class="period-badge">${periodo}</span>
+            </div>
+            <ul class="task-list">
+                ${tareas.map(tarea => `
+                    <li class="task-item">
+                        <i data-lucide="chevron-right" class="task-icon"></i>
+                        <span>${tarea}</span>
+                    </li>
+                `).join('')}
+            </ul>
+        `;
+        
+        // Insertar antes del botón (que es el último hijo del contenedor)
+        contenedor.insertBefore(nuevaExp, contenedor.lastElementChild);
+        
+        // Reinicializar iconos para la nueva tarjeta
+        lucide.createIcons();
+    }
+};
+
+// Event Listener para el botón de experiencia
+const btnExp = document.getElementById("add-experience-btn");
+
+if (btnExp) {
+    btnExp.addEventListener("click", () => {
+        const rol = prompt("Cargo o Rol:");
+        const empresa = prompt("Nombre de la Empresa:");
+        const periodo = prompt("Periodo (Ej: Ene 2024 - Actualidad):");
+        const tareaInput = prompt("Describe tu principal tarea (puedes agregar más después):");
+        
+        if (rol && empresa && periodo) {
+            // Pasamos la tarea como un array
+            agregarExperiencia(rol, empresa, periodo, [tareaInput || "Nueva posición"]);
         }
     });
 }
